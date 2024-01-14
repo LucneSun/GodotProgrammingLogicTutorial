@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8keg13ed1401"]
+
+[ext_resource type="Script" path="res://modules/objective/Objective.gd" id="1_m1g1m"]
+[ext_resource type="Texture2D" uid="uid://dn0bxygwaxvbc" path="res://assets/player/flowergirl2_flower.png" id="2_x2d6o"]
+[ext_resource type="AudioStream" uid="uid://c33fg2ln5qeas" path="res://sounds/flower.wav" id="3_ajj02"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k8q6i"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_r8i6v"]
+radial_segments = 12
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loe2x"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.427451, 0.415686, 1, 0.788235)
+
+[node name="Objective" type="Area3D" groups=["flowers"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80921, 9.42564, 13.4256)
+script = ExtResource("1_m1g1m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_k8q6i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_r8i6v")
+surface_material_override/0 = SubResource("StandardMaterial3D_loe2x")
+
+[node name="Sprite3D" type="Sprite3D" parent="MeshInstance3D"]
+pixel_size = 0.03
+billboard = 1
+texture = ExtResource("2_x2d6o")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ajj02")
+volume_db = 5.0

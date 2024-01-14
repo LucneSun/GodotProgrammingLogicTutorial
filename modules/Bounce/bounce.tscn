@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm4231hv2sdlk"]
+
+[ext_resource type="Script" path="res://modules/Bounce/Bounce.gd" id="1_syug8"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h2as0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7diw"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.415686, 0.0862745, 1, 0.545098)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tg7qm"]
+size = Vector3(1, 2.13293, 1)
+
+[node name="Bounce" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.33474, 7.38088, -13.8352)
+script = ExtResource("1_syug8")
+impulse = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570808, 0)
+mesh = SubResource("CylinderMesh_h2as0")
+surface_material_override/0 = SubResource("StandardMaterial3D_n7diw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.566467, 0)
+shape = SubResource("BoxShape3D_tg7qm")

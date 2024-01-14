@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://dohh8dp06qyoo"]
+
+[ext_resource type="Script" path="res://modules/enemy/Enemy.gd" id="1_ls2im"]
+[ext_resource type="Shader" path="res://modules/enemy/enemy.gdshader" id="2_4wjj4"]
+[ext_resource type="AudioStream" uid="uid://rn74g7ul0uvi" path="res://sounds/ball.wav" id="3_p38qw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gc67h"]
+radius = 0.4
+height = 0.7
+radial_segments = 12
+rings = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rw3a1"]
+render_priority = 0
+shader = ExtResource("2_4wjj4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ky1ji"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Enemy" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04971, -13.545)
+script = ExtResource("1_ls2im")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_gc67h")
+surface_material_override/0 = SubResource("ShaderMaterial_rw3a1")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_p38qw")
+unit_size = 2.0
+max_db = 6.0
+autoplay = true
+emission_angle_degrees = 90.0
+doppler_tracking = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ky1ji")

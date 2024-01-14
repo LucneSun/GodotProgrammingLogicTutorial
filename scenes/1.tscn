@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcrt5ay1lcs4j"]
+
+[ext_resource type="MeshLibrary" uid="uid://bgty24b2dqf6d" path="res://assets/common/level/testelevel.meshlib" id="1_oaaqd"]
+[ext_resource type="PackedScene" uid="uid://b8keg13ed1401" path="res://modules/objective/objective.tscn" id="2_ekt0r"]
+
+[node name="BaseLevel" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_oaaqd")
+data = {
+"cells": PackedInt32Array(-65535, 2, 1441793, -1, 2, 1441793, -65534, 2, 1441793, -65534, 3, 655361, -65534, 4, 655367, -65534, 5, 655367, -65534, 6, 655361, -65535, 6, 1048577, -2, 6, 1048577, -2, 5, 1, -2, 4, 7, -2, 2, 1, -2, 3, 7, -65535, 5, 1441795, 65537, 7, 851968, 65537, 8, 851968, 65536, 8, 851968, 65536, 7, 851968, 196605, 8, 851968, 196604, 8, 851968, 196604, 9, 851968, 196605, 9, 851968, 262139, 6, 851968, 262139, 7, 851968, 262138, 7, 851968, 262138, 6, 851968, -2, 1, 1441794, -65535, 1, 1441794, -1, 6, 1048583, -65536, 6, 1048583, -65536, 2, 1441798)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="Objective" parent="." instance=ExtResource("2_ekt0r")]
